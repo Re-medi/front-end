@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class IconAssets {
   static SvgPicture iconFire({double size = 28, Color? color}) {
@@ -111,6 +112,14 @@ class IconAssets {
         'assets/icons/icon_respiratory.svg',
         height: size,
         colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null
+    );
+  }
+
+  static Widget animationLoading({double size = 80}) {
+    return Lottie.asset(
+        'assets/animations/animated_loading.json',
+        height: size,
+      repeat: true,
     );
   }
 }

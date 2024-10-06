@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:remedi/ui/themes/AppTextStyles.dart';
 import 'package:remedi/ui/themes/AppPalette.dart';
+import 'package:remedi/ui/themes/IconAssets.dart';
 import 'package:remedi/data/models/Disease.dart';
-
+import 'package:lottie/lottie.dart';
 class Loadingpage extends StatelessWidget {
   Widget _buildHeader() {
     return Column(
@@ -12,6 +13,18 @@ class Loadingpage extends StatelessWidget {
         Text("Re:medi가 실습에 적절한 환자를 생성하고 있어요.", style: AppTextStyles.body(color: AppPalette.gray)),
         const SizedBox(height: 20),
       ],
+    );
+  }
+
+  Widget _buildLoading() {
+    return Expanded(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconAssets.animationLoading(),
+            const SizedBox(height: 100),
+          ]
+        )
     );
   }
 
@@ -30,7 +43,8 @@ class Loadingpage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            _buildHeader()
+            _buildHeader(),
+            _buildLoading()
           ],
         ),
       ),

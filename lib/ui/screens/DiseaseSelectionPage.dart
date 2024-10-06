@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remedi/ui/themes/AppTextStyles.dart';
 import 'package:remedi/ui/themes/AppPalette.dart';
+import 'package:remedi/ui/themes/IconAssets.dart';
 import 'package:remedi/data/models/Disease.dart';
 import '../../data/models/PracticeState.dart';
 
