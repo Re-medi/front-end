@@ -58,7 +58,7 @@ class IconAssets {
     );
   }
 
-  static SvgPicture iconGastrp({double size = 60, Color? color}) {
+  static SvgPicture iconGastro({double size = 60, Color? color}) {
     return SvgPicture.asset(
         'assets/icons/icon_gastro.svg',
         height: size,

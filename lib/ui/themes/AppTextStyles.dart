@@ -50,6 +50,24 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle cardTitle({Color color = AppPalette.black}) {
+    return GoogleFonts.inter(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.6,
+        color: color
+    );
+  }
+
+  static TextStyle cardKeyword({Color color = AppPalette.black}) {
+    return GoogleFonts.inter(
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        letterSpacing: -0.8,
+        color: color
+    );
+  }
+
   static TextStyle body({Color color = AppPalette.black}) {
     return GoogleFonts.roboto(
         fontSize: 14,

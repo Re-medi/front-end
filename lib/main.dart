@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // 여기 추가
-import 'package:remedi/ui/screens/DiseaseSelectionPage.dart';
+import 'package:provider/provider.dart';
 import 'package:remedi/ui/themes/AppPalette.dart';
 import 'package:remedi/ui/screens/UserDashboardPage.dart';
-import 'package:remedi/data/models/PracticeState.dart'; // PracticeState 추가
+import 'package:remedi/ui/screens/DiseaseSelectionPage.dart';
+import 'package:remedi/ui/screens/LoadingPage.dart';
+import 'package:remedi/data/models/PracticeState.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const UserDashboardPage(),
           '/disease_selection': (context) => DiseaseSelectionPage(),
+          '/loading': (context) => Loadingpage(),
         },
       ),
     );
