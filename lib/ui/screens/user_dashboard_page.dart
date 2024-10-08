@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/ui/themes/IconAssets.dart';
-import '../../data/models/PracticeState.dart';
-import '../widgets/ClipOvalIcon.dart';
-import '../widgets/MetaInfoSection.dart';
-import '../widgets/PracticeCard.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/ui/themes/icon_assets.dart';
+import '../../data/models/practice_state.dart';
+import '../widgets/clip_oval_icon.dart';
+import '../widgets/meta_info_section.dart';
+import '../widgets/practice_card.dart';
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({super.key});

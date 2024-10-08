@@ -1,45 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/ui/themes/IconAssets.dart';
-import 'package:remedi/data/models/Patient.dart';
-import 'package:remedi/data/models/Prescription.dart';
-import 'package:remedi/ui/widgets/PrescriptionTable.dart';
-import 'package:remedi/data/models/PracticeState.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/ui/themes/icon_assets.dart';
+import 'package:remedi/data/models/patient.dart';
+import 'package:remedi/data/models/prescription.dart';
+import 'package:remedi/data/models/practice_state.dart';
+import 'package:remedi/ui/screens/patient_creation_page.dart';
 
-class Loadingpage extends StatelessWidget {
+
+class Loadingpage extends StatefulWidget {
   const Loadingpage({super.key});
 
-  Widget _buildHeader() {
-    return Column(
-      children: [
-        Text("환자 생성 중...", style: AppTextStyles.h2()),
-        const SizedBox(height: 4),
-        Text("Re:medi가 실습에 적절한 환자를 생성하고 있어요.", style: AppTextStyles.body(color: AppPalette.gray)),
-        const SizedBox(height: 20),
-      ],
-    );
-  }
-
-  Widget _buildLoading() {
-    return Expanded(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconAssets.animationLoading(),
-            const SizedBox(height: 100),
-          ]
-        )
-    );
-  }
-
   @override
-  Widget build(BuildContext context) {
+  _LoadingpageState createState() => _LoadingpageState();
+}
+
+class _LoadingpageState extends State<Loadingpage> {
+  @override
+  void initState() {
+    super.initState();
+
     final practiceState = Provider.of<PracticeState>(context, listen: false);
 
     Future.delayed(const Duration(seconds: 3), () async {
-      // 예시 데이터로 초기화:
       final Patient patient = Patient(
         name: "유해진",
         gender: "M",
@@ -58,14 +42,47 @@ class Loadingpage extends StatelessWidget {
         ],
       );
 
-      // PracticeState에 데이터를 저장
       practiceState.setPatient(patient);
       practiceState.setPrescription(prescription);
 
-      // 데이터를 저장한 후 다음 페이지로 이동
-      Navigator.pushReplacementNamed(context, '/patient');
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation1, animation2) => const PatientCreationPage(),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+          ),
+        );
+      }
     });
+  }
 
+  Widget _buildHeader() {
+    return Column(
+      children: [
+        Text("환자 생성 중...", style: AppTextStyles.h2()),
+        const SizedBox(height: 4),
+        Text("Re:medi가 실습에 적절한 환자를 생성하고 있어요.", style: AppTextStyles.body(color: AppPalette.gray)),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  Widget _buildLoading() {
+    return Expanded(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconAssets.animationLoading(),
+              const SizedBox(height: 100),
+            ]
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

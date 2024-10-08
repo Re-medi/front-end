@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/IconAssets.dart';
+import 'package:remedi/ui/themes/icon_assets.dart';
 
 enum DiseaseCategory {
   gastro,         // 소화기계

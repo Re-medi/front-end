@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './Disease.dart';
-import './Patient.dart';
-import './Prescription.dart';
+import './disease.dart';
+import './patient.dart';
+import './prescription.dart';
 
 enum PracticeType {
   practiceChat,   // AI 환자와 연습 대화

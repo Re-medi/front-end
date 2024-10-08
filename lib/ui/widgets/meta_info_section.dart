@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
 
 class MetaInfoSection extends StatelessWidget {
   final List<Map<String, String>> infoData;
@@ -10,7 +10,7 @@ class MetaInfoSection extends StatelessWidget {
     required this.infoData,
   });
 
-  Widget _InfoColumn({
+  Widget _infoColumn({
     required String content,
     required String unit,
     required String title,
@@ -50,9 +50,7 @@ class MetaInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.red,
-        child: Row(
+    return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(infoData.length, (index) {
           final item = infoData[index];
@@ -60,7 +58,7 @@ class MetaInfoSection extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: _InfoColumn(
+                  child: _infoColumn(
                     content: item['content'] ?? '',
                     unit: item['unit'] ?? '',
                     title: item['title'] ?? '',
@@ -72,6 +70,6 @@ class MetaInfoSection extends StatelessWidget {
             ),
           );
         }),
-    ));
+    );
   }
 }

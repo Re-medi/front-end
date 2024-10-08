@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/data/models/Disease.dart';
-import '../../data/models/PracticeState.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/data/models/disease.dart';
+import '../../data/models/practice_state.dart';
 
 class DiseaseSelectionPage extends StatelessWidget {
   const DiseaseSelectionPage({super.key});

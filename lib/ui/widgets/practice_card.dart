@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
 
 class PracticeCard extends StatelessWidget {
   final String title;

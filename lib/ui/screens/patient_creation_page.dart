@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/data/models/Patient.dart';
-import 'package:remedi/data/models/Prescription.dart';
-import 'package:remedi/ui/widgets/PrescriptionTable.dart';
-import 'package:remedi/data/models/PracticeState.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/data/models/patient.dart';
+import 'package:remedi/data/models/prescription.dart';
+import 'package:remedi/ui/widgets/prescription_table.dart';
+import 'package:remedi/data/models/practice_state.dart';
 
 class PatientCreationPage extends StatelessWidget {
   const PatientCreationPage({super.key});

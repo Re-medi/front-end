@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/data/models/PracticeState.dart';
-import 'package:remedi/data/models/Disease.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/data/models/practice_state.dart';
+import 'package:remedi/data/models/disease.dart';
 
-class MedicationChatPage extends StatefulWidget {
-  const MedicationChatPage({Key? key}) : super(key: key);
+class MedicationRealPage extends StatefulWidget {
+  const MedicationRealPage({super.key});
 
   @override
-  _MedicationChatPageState createState() => _MedicationChatPageState();
+  MedicationRealPageState createState() => MedicationRealPageState();
 }
 
-class _MedicationChatPageState extends State<MedicationChatPage> {
+class MedicationRealPageState extends State<MedicationRealPage> {
   @override
   Widget build(BuildContext context) {
     final practiceState = Provider.of<PracticeState>(context);
@@ -44,10 +44,8 @@ class _MedicationChatPageState extends State<MedicationChatPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             const SizedBox(height: 20),
-            Text("복약지도 Chat 대화를 시작합니다.", style: AppTextStyles.h3()),
-            // 여기에 대화 기능 구현
+            Text("실전 복약지도를 시작합니다.", style: AppTextStyles.h3()),
           ],
         ),
       ),

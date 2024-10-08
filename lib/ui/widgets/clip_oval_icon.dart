@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
 
 class ClipOverIcon extends StatelessWidget {
   final Widget icon;

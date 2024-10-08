@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/AppTextStyles.dart';
-import 'package:remedi/data/models/Prescription.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/themes/app_text_styles.dart';
+import 'package:remedi/data/models/prescription.dart';
 
 class PrescriptionTable extends StatelessWidget {
   final Prescription prescription;
@@ -22,7 +22,7 @@ class PrescriptionTable extends StatelessWidget {
       },
       children: [
         TableRow(
-          decoration: BoxDecoration(color: AppPalette.lightGray),
+          decoration: const BoxDecoration(color: AppPalette.lightGray),
           children: [
             Center(child: Text("의약품 명칭", style: AppTextStyles.tableTitle())),
             Center(child: Text('1회\n투약량', style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/screens/UserDashboardPage.dart';
-import 'package:remedi/ui/screens/DiseaseSelectionPage.dart';
-import 'package:remedi/ui/screens/LoadingPage.dart';
-import 'package:remedi/ui/screens/PatientCreationPage.dart';
-import 'package:remedi/ui/screens/MedicationRealPage.dart';
-import 'package:remedi/ui/screens/MedicationChatPage.dart';
-import 'package:remedi/data/models/PracticeState.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/screens/user_dashboard_page.dart';
+import 'package:remedi/ui/screens/disease_selection_page.dart';
+import 'package:remedi/ui/screens/loading_page.dart';
+import 'package:remedi/ui/screens/patient_creation_page.dart';
+import 'package:remedi/ui/screens/medication_real_page.dart';
+import 'package:remedi/ui/screens/medication_chat_page.dart';
+import 'package:remedi/data/models/practice_state.dart';
 
 void main() {
   runApp(const MyApp());
