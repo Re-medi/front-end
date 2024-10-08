@@ -69,22 +69,21 @@ class AppTextStyles {
   }
 
   static TextStyle tableTitle({Color color = AppPalette.darkGray}) {
-    return GoogleFonts.inter(
-        fontSize: 10,
+    return GoogleFonts.roboto(
+        fontSize: 11,
         fontWeight: FontWeight.w700,
-        letterSpacing: -0.7,
+        letterSpacing: -1,
         color: color
     );
   }
 
   static TextStyle tableText({Color color = AppPalette.black}) {
-    return GoogleFonts.inter(
-        fontSize: 12,
+    return GoogleFonts.roboto(
+        fontSize: 13,
         letterSpacing: -0.6,
         color: color
     );
   }
-
 
   static TextStyle body({Color color = AppPalette.black}) {
     return GoogleFonts.roboto(

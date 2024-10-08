@@ -122,4 +122,11 @@ class IconAssets {
       repeat: true,
     );
   }
+
+  static Image iconPatient({double size = 96}) {
+    return Image.asset(
+        'assets/icons/icon_patient.png',
+        height: size,
+    );
+  }
 }
