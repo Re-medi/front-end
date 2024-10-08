@@ -4,6 +4,9 @@ import 'package:remedi/ui/themes/AppPalette.dart';
 import 'package:remedi/ui/screens/UserDashboardPage.dart';
 import 'package:remedi/ui/screens/DiseaseSelectionPage.dart';
 import 'package:remedi/ui/screens/LoadingPage.dart';
+import 'package:remedi/ui/screens/PatientCreationPage.dart';
+import 'package:remedi/ui/screens/MedicationRealPage.dart';
+import 'package:remedi/ui/screens/MedicationChatPage.dart';
 import 'package:remedi/data/models/PracticeState.dart';
 
 void main() {
@@ -27,8 +30,11 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const UserDashboardPage(),
-          '/disease_selection': (context) => DiseaseSelectionPage(),
-          '/loading': (context) => Loadingpage(),
+          '/disease_selection': (context) => const DiseaseSelectionPage(),
+          '/loading': (context) => const Loadingpage(),
+          '/patient': (context) => const PatientCreationPage(),
+          '/chat': (context) => const MedicationChatPage(),
+          '/real': (context) => const MedicationRealPage(),
         },
       ),
     );

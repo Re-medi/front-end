@@ -68,6 +68,24 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle tableTitle({Color color = AppPalette.darkGray}) {
+    return GoogleFonts.inter(
+        fontSize: 10,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.7,
+        color: color
+    );
+  }
+
+  static TextStyle tableText({Color color = AppPalette.black}) {
+    return GoogleFonts.inter(
+        fontSize: 12,
+        letterSpacing: -0.6,
+        color: color
+    );
+  }
+
+
   static TextStyle body({Color color = AppPalette.black}) {
     return GoogleFonts.roboto(
         fontSize: 14,
@@ -101,7 +119,7 @@ class AppTextStyles {
           text: mainText,
           style: style.copyWith(color: color),
         ),
-        WidgetSpan(
+        const WidgetSpan(
           child: SizedBox(width: 2), // 원하는 간격 추가
         ),
         TextSpan(

@@ -16,6 +16,22 @@ enum DiseaseCategory {
   endo,           // 내분비계 ∙ 호르몬
 }
 
+final Map<DiseaseCategory, String> diseaseCategoryToKorean = {
+  DiseaseCategory.gastro: "소화기계",
+  DiseaseCategory.infectious: "감염 질환",
+  DiseaseCategory.cardio: "심혈관계",
+  DiseaseCategory.neuro: "정신 ∙ 신경계",
+  DiseaseCategory.oncoimmune: "종양 ∙ 면역계",
+  DiseaseCategory.msk: "근 ∙ 골격계",
+  DiseaseCategory.hema: "혈액 ∙ 조혈기계",
+  DiseaseCategory.respiratory: "호흡기계",
+  DiseaseCategory.gu: "비뇨생식기계∙성호르몬",
+  DiseaseCategory.derm: "피부질환",
+  DiseaseCategory.ent: "안과 ∙ 귀",
+  DiseaseCategory.endo: "내분비계 ∙ 호르몬",
+};
+
+
 class Disease {
   final String name;
   final DiseaseCategory category;

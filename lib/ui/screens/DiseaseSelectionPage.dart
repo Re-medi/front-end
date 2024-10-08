@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remedi/ui/themes/AppTextStyles.dart';
 import 'package:remedi/ui/themes/AppPalette.dart';
-import 'package:remedi/ui/themes/IconAssets.dart';
 import 'package:remedi/data/models/Disease.dart';
 import '../../data/models/PracticeState.dart';
 
 class DiseaseSelectionPage extends StatelessWidget {
+  const DiseaseSelectionPage({super.key});
+
   Widget _buildHeader() {
     return Column(
       children: [
@@ -53,7 +54,7 @@ class DiseaseSelectionPage extends StatelessWidget {
       onTap: () {
         Provider.of<PracticeState>(context, listen: false)
             .selectDiseaseCategory(disease.category);
-        Navigator.pushNamed(context, '/loading');
+        Navigator.pushReplacementNamed(context, '/loading');
       },
       child: Container(
         decoration: BoxDecoration(

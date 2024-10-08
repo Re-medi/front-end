@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:remedi/ui/themes/AppPalette.dart';
 import 'package:remedi/ui/themes/AppTextStyles.dart';
@@ -8,8 +7,6 @@ import '../../data/models/PracticeState.dart';
 import '../widgets/ClipOvalIcon.dart';
 import '../widgets/MetaInfoSection.dart';
 import '../widgets/PracticeCard.dart';
-
-
 
 class UserDashboardPage extends StatefulWidget {
   const UserDashboardPage({super.key});
