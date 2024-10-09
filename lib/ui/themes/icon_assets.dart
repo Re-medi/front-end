@@ -123,6 +123,14 @@ class IconAssets {
     );
   }
 
+  static SvgPicture iconVoice({double size = 48, Color? color}) {
+    return SvgPicture.asset(
+        'assets/icons/icon_voice.svg',
+        height: size,
+        colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null
+    );
+  }
+
   static Image iconPatient({double size = 96}) {
     return Image.asset(
         'assets/icons/icon_patient.png',

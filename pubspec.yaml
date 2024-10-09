@@ -40,6 +40,8 @@ dependencies:
   lottie: ^3.1.2
   animated_svg: ^2.1.0
   logging: ^1.2.0
+  speech_to_text: ^7.0.0
+  flutter_audio_waveforms: ^1.2.1+8
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ class AppPalette {
   // 주요 색상 (Primary, Secondary)
   static const Color primary = Color(0xFF0BAB7C);
   static const Color primaryHighlight = Color(0xFFE3F2EE);
+  static const Color primaryDark = Color(0xFF98D5C3);
 
   static const Color secondary = Color(0xFFF7825E);
   static const Color secondaryHighlight = Color(0xFFFBE3CD);
