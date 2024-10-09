@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:remedi/ui/themes/AppPalette.dart';
+import 'package:provider/provider.dart';
+import 'package:remedi/ui/themes/app_palette.dart';
+import 'package:remedi/ui/screens/user_dashboard_page.dart';
+import 'package:remedi/ui/screens/disease_selection_page.dart';
+import 'package:remedi/ui/screens/loading_page.dart';
+import 'package:remedi/ui/screens/patient_creation_page.dart';
+import 'package:remedi/ui/screens/medication_real_page.dart';
+import 'package:remedi/ui/screens/medication_chat_page.dart';
+import 'package:remedi/data/models/practice_state.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -7,69 +16,27 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Re:medi',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppPalette.primaryColor),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return ChangeNotifierProvider(
+      create: (context) => PracticeState(),
+      child: MaterialApp(
+        title: 'Re:medi',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: AppPalette.primary),
+          scaffoldBackgroundColor: AppPalette.background,
+          useMaterial3: true,
         ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const UserDashboardPage(),
+          '/disease_selection': (context) => const DiseaseSelectionPage(),
+          '/loading': (context) => const Loadingpage(),
+          '/patient': (context) => const PatientCreationPage(),
+          '/chat': (context) => const MedicationChatPage(),
+          '/real': (context) => const MedicationRealPage(),
+        },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

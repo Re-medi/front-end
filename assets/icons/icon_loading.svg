@@ -1,0 +1,47 @@
+<svg width="470" height="150" viewBox="0 0 470 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Property 1=Default">
+<g id="ì•Œì•½ 8">
+<rect id="Rectangle 738" width="65" height="149.424" rx="32.5" fill="#0ACB92">
+                                    <animate attributeName="height" values="149.424;126;149.424" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="y" values="0;17.9619;0" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_2" d="M0 79L65 79L65 116.664C65 134.614 50.4493 149.164 32.5 149.164C14.5507 149.164 0 134.614 0 116.664L0 79Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M0 79L65 79L65 116.664C65 134.614 50.4493 149.164 32.5 149.164C14.5507 149.164 0 134.614 0 116.664L0 79Z;M0 84.8257L65 84.8257L65 111.326C65 129.275 50.4493 143.826 32.5 143.826C14.5507 143.826 0 129.275 0 111.326L0 84.8257Z;M0 79L65 79L65 116.664C65 134.614 50.4493 149.164 32.5 149.164C14.5507 149.164 0 134.614 0 116.664L0 79Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+<g id="ì•Œì•½ 2">
+<rect id="Rectangle 738_3" x="81" width="65" height="149.424" rx="32.5" fill="#0ACB92">
+                                    <animate attributeName="height" values="149.424;149.42;149.424" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="y" values="0;6.25195;0" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_4" d="M81 79L146 79L146 116.664C146 134.614 131.449 149.164 113.5 149.164C95.5507 149.164 81 134.614 81 116.664L81 79Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M81 79L146 79L146 116.664C146 134.614 131.449 149.164 113.5 149.164C95.5507 149.164 81 134.614 81 116.664L81 79Z;M81 84.0684L146 84.0684L146 122.803C146 140.753 131.449 155.303 113.5 155.303C95.5507 155.303 81 140.753 81 122.803L81 84.0684Z;M81 79L146 79L146 116.664C146 134.614 131.449 149.164 113.5 149.164C95.5507 149.164 81 134.614 81 116.664L81 79Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+<g id="ì•Œì•½ 3">
+<rect id="Rectangle 738_5" x="162" y="13.2119" width="65" height="123" rx="32.5" fill="#0ACB92">
+                                    <animate attributeName="y" values="13.2119;25.9619;13.2119" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="height" values="123;110;123" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_6" d="M162 77.2119L227 77.2119L227 103.712C227 121.661 212.449 136.212 194.5 136.212C176.551 136.212 162 121.661 162 103.712L162 77.2119Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M162 77.2119L227 77.2119L227 103.712C227 121.661 212.449 136.212 194.5 136.212C176.551 136.212 162 121.661 162 103.712L162 77.2119Z;M162 84.5376L227 84.5376L227 103.038C227 120.987 212.449 135.538 194.5 135.538C176.551 135.538 162 120.987 162 103.038L162 84.5376Z;M162 77.2119L227 77.2119L227 103.712C227 121.661 212.449 136.212 194.5 136.212C176.551 136.212 162 121.661 162 103.712L162 77.2119Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+<g id="ì•Œì•½ 7">
+<rect id="Rectangle 738_7" x="243" width="65" height="149.424" rx="32.5" fill="#0AC48D">
+                                    <animate attributeName="height" values="149.424;119;149.424" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="y" values="0;21.396;0" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_8" d="M243 79L308 79L308 116.664C308 134.614 293.449 149.164 275.5 149.164C257.551 149.164 243 134.614 243 116.664L243 79Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M243 79L308 79L308 116.664C308 134.614 293.449 149.164 275.5 149.164C257.551 149.164 243 134.614 243 116.664L243 79Z;M243 83.5283L308 83.5283L308 108.028C308 125.978 293.449 140.528 275.5 140.528C257.551 140.528 243 125.978 243 108.028L243 83.5283Z;M243 79L308 79L308 116.664C308 134.614 293.449 149.164 275.5 149.164C257.551 149.164 243 134.614 243 116.664L243 79Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+<g id="ì•Œì•½ 5">
+<rect id="Rectangle 738_9" x="324" width="65" height="149.424" rx="32.5" fill="#0BBF8A">
+                                    <animate attributeName="height" values="149.424;161;149.424" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="y" values="0;0.424316;0" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_10" d="M324 79L389 79L389 116.664C389 134.614 374.449 149.164 356.5 149.164C338.551 149.164 324 134.614 324 116.664L324 79Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M324 79L389 79L389 116.664C389 134.614 374.449 149.164 356.5 149.164C338.551 149.164 324 134.614 324 116.664L324 79Z;M324 83.5L389 83.5L389 129C389 146.949 374.449 161.5 356.5 161.5C338.551 161.5 324 146.949 324 129L324 83.5Z;M324 79L389 79L389 116.664C389 134.614 374.449 149.164 356.5 149.164C338.551 149.164 324 134.614 324 116.664L324 79Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+<g id="ì•Œì•½ 6">
+<rect id="Rectangle 738_11" x="405" y="13.2119" width="65" height="123" rx="32.5" fill="#0CB785">
+                                    <animate attributeName="y" values="13.2119;6.25195;13.2119" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="height" values="123;149.308;123" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></rect>
+<path id="Rectangle 738_12" d="M405 77.2119L470 77.2119L470 103.712C470 121.661 455.449 136.212 437.5 136.212C419.551 136.212 405 121.661 405 103.712L405 77.2119Z" fill="#A1D6B2">
+                                    <animate attributeName="d" values="M405 77.2119L470 77.2119L470 103.712C470 121.661 455.449 136.212 437.5 136.212C419.551 136.212 405 121.661 405 103.712L405 77.2119Z;M405 84.7139L470 84.7139L470 123.172C470 141.121 455.449 155.672 437.5 155.672C419.551 155.672 405 141.121 405 123.172L405 84.7139Z;M405 77.2119L470 77.2119L470 103.712C470 121.661 455.449 136.212 437.5 136.212C419.551 136.212 405 121.661 405 103.712L405 77.2119Z" begin="0s" dur="2s" repeatCount="indefinite" fill="freeze" calcMode="linear" keyTimes="0;0.5;1"/></path>
+</g>
+
+                                    </g>
+</svg>
