@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:remedi/ui/themes/app_text_styles.dart';
 import 'package:remedi/ui/themes/app_palette.dart';
-import 'package:remedi/ui/themes/icon_assets.dart';
-import 'package:remedi/data/models/practice_state.dart';
-import 'package:remedi/data/models/disease.dart';
 import 'package:remedi/ui/widgets/exit_confirmation_dialog.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:flutter_audio_waveforms/flutter_audio_waveforms.dart';
-
+import 'package:remedi/ui/widgets/sound_wave_painter.dart';
+import 'package:remedi/ui/widgets/recording_chat_button.dart';
 
 class MedicationChatPage extends StatefulWidget {
   const MedicationChatPage({super.key});
@@ -20,7 +16,10 @@ class MedicationChatPage extends StatefulWidget {
 class MedicationChatPageState extends State<MedicationChatPage> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
+  bool _isSaved = false;
+  String _sendMessages = "";
   String _recognizedText = "버튼을 눌러 음성을 인식하세요.";
+  double _soundLevel = 0.0;
 
   @override
   void initState() {
@@ -39,9 +38,15 @@ class MedicationChatPageState extends State<MedicationChatPage> {
       _speech.listen(
         onResult: (val) => setState(() {
           _recognizedText = val.recognizedWords;
+          _isSaved = false; // 새로운 녹음을 시작하면 저장 상태 초기화
         }),
-        listenFor: Duration(seconds: 30), // 듣기 시간 설정
-        pauseFor: Duration(seconds: 30)   // 단어 사이의 최대 침묵 시간
+        onSoundLevelChange: (level) {
+          setState(() {
+            _soundLevel = level;
+          });
+        },
+        listenFor: const Duration(seconds: 30),
+        pauseFor: const Duration(seconds: 30),
       );
     } else {
       print("Speech recognition not available.");
@@ -49,8 +54,21 @@ class MedicationChatPageState extends State<MedicationChatPage> {
   }
 
   void _stopListening() {
-    setState(() => _isListening = false);
+    setState(() {
+      _isListening = false;
+      _recognizedText = "버튼을 눌러 음성을 인식하세요."; // 초기화
+      _isSaved = false;
+    });
     _speech.stop();
+  }
+
+  void _saveRecording() {
+    setState(() {
+      _isSaved = true; // 녹음이 저장됨
+      _isListening = false;
+    });
+    _sendMessages += _recognizedText;
+    print("채팅 저장: $_recognizedText");
   }
 
   Future<bool> _onWillPop() async {
@@ -59,14 +77,10 @@ class MedicationChatPageState extends State<MedicationChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final practiceState = Provider.of<PracticeState>(context);
-    final selectedCategory = practiceState.selectedDiseaseCategory;
-    final patient = practiceState.patient;
-    final prescription = practiceState.prescription;
-
-    final medicationNames = prescription?.medications.map((med) => med.name).toList() ?? [];
-    final firstMedicationName = medicationNames.isNotEmpty ? medicationNames[0] : '';
-    final remainingMedicationsCount = (medicationNames.length > 1) ? ' 외' : '';
+    final barCount = 12;
+    final barWidth = 9.0;
+    final spacing = 5.0;
+    final totalWidth = barCount * barWidth + (barCount - 1) * spacing;
 
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -74,46 +88,44 @@ class MedicationChatPageState extends State<MedicationChatPage> {
         appBar: AppBar(
           backgroundColor: AppPalette.background,
           centerTitle: true,
-          title: Text(
-            "${diseaseCategoryToKorean[selectedCategory]}: ${patient?.age}세 ${patient?.gender == 'M' ? '남성' : '여성'} ($firstMedicationName$remainingMedicationsCount)",
-            style: AppTextStyles.h4(),
-          ),
+          title: Text("음성 인식 예제", style: AppTextStyles.h4()),
           leading: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () => _onWillPop(),
+            icon: const Icon(Icons.close_rounded),
+            onPressed: () => Navigator.of(context).maybePop(),
           ),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 20),
-              Text(_recognizedText, style: AppTextStyles.h3()),
-            ],
-          ),
-        ),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 36.0),
-          child: SizedBox(
-            width: 80.0,
-            height: 80.0,
-            child: FloatingActionButton(
-              onPressed: _isListening ? _stopListening : _startListening,
-              backgroundColor: _isListening ? AppPalette.primaryHighlight : AppPalette.primary,
-              elevation: 0,
-              child: Icon(
-                _isListening ? Icons.upload : Icons.mic,
-                size: 40,
-                color: _isListening ? AppPalette.primary : AppPalette.white,
-              ),
-              shape: CircleBorder(
-                side: BorderSide(
-                  color: _isListening ? AppPalette.primaryDark :AppPalette.primary, // 테두리 색상
-                  width: 4.0,
-                ),
+        body: Stack(
+          alignment: Alignment.center,
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(_sendMessages, style: AppTextStyles.h3(color: AppPalette.gray)),
+                  const SizedBox(height: 20),
+                  Text(_recognizedText, style: AppTextStyles.h3()),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-          ),
+            if (_isListening)
+              Positioned(
+                bottom: 120.0,
+                child: Container(
+                  width: totalWidth,
+                  height: 60,
+                  child: CustomPaint(
+                    painter: SoundWavePainter(_soundLevel),
+                  ),
+                ),
+              ),
+          ],
+        ),
+        floatingActionButton: RecordingChatButton(
+          isListening: _isListening,
+          onStart: _startListening,
+          onStop: _stopListening,
+          onSend: _saveRecording,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),

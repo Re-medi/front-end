@@ -70,16 +70,16 @@ class AppTextStyles {
 
   static TextStyle tableTitle({Color color = AppPalette.darkGray}) {
     return GoogleFonts.roboto(
-        fontSize: 11,
+        fontSize: 10,
         fontWeight: FontWeight.w700,
-        letterSpacing: -1,
+        letterSpacing: -0.6,
         color: color
     );
   }
 
   static TextStyle tableText({Color color = AppPalette.black}) {
     return GoogleFonts.roboto(
-        fontSize: 13,
+        fontSize: 12,
         letterSpacing: -0.6,
         color: color
     );

@@ -14,20 +14,29 @@ class PrescriptionTable extends StatelessWidget {
       border: TableBorder.all(color: AppPalette.strokeGray),
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       columnWidths: const {
-        0: FlexColumnWidth(5),
-        1: FlexColumnWidth(3),
-        2: FlexColumnWidth(2),
-        3: FlexColumnWidth(2),
-        4: FlexColumnWidth(6),
+        0: FlexColumnWidth(9),
+        1: FlexColumnWidth(6),
+        2: FlexColumnWidth(5),
+        3: FlexColumnWidth(5),
+        4: FlexColumnWidth(12),
       },
       children: [
         TableRow(
           decoration: const BoxDecoration(color: AppPalette.lightGray),
           children: [
             Center(child: Text("의약품 명칭", style: AppTextStyles.tableTitle())),
-            Center(child: Text('1회\n투약량', style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
-            Center(child: Text("1회\n투여횟수", style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
-            Center(child: Text("총\n투여일수", style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Center(child: Text('1회\n투약량', style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Center(child: Text("1회\n투여횟수", style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Center(child: Text("총\n투여일수", style: AppTextStyles.tableTitle(), textAlign: TextAlign.center)),
+            ),
             Center(child: Text("용  법", style: AppTextStyles.tableTitle())),
           ],
         ),
