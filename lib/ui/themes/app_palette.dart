@@ -21,6 +21,7 @@ class AppPalette {
   // 회색 계열
   static const Color strokeGray = Color(0xFFC2C2C2);
   static const Color darkGray = Color(0xFF434343);
+  static const Color midGray = Color(0xFF646464);
   static const Color gray = Color(0xFF7C7C7C);
   static const Color lightGray = Color(0xFFD9D9D9);
   static const Color shapeBackground = Color(0xFFE9E9E9);

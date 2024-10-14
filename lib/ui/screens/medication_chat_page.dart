@@ -6,6 +6,7 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:remedi/ui/widgets/sound_wave_painter.dart';
 import 'package:remedi/ui/widgets/recording_chat_button.dart';
 
+
 class MedicationChatPage extends StatefulWidget {
   const MedicationChatPage({super.key});
 
@@ -16,59 +17,108 @@ class MedicationChatPage extends StatefulWidget {
 class MedicationChatPageState extends State<MedicationChatPage> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
-  bool _isSaved = false;
-  String _sendMessages = "";
-  String _recognizedText = "버튼을 눌러 음성을 인식하세요.";
+  List<String> _messages = [];
+  final String _defaultPromptText = "버튼을 눌러 대답해보세요.";
+  final String _defaultActivatePromptText = "지금 말하세요...";
+  late String _recognizedText;
   double _soundLevel = 0.0;
 
   @override
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
+    _recognizedText = _defaultPromptText;
   }
 
-  void _startListening() async {
+  Future<void> _startListening() async {
+    if (_isListening) return;
+
+    setState(() {
+      _isListening = true;
+      _recognizedText = _defaultActivatePromptText;
+    });
+
     bool available = await _speech.initialize(
       onError: (val) => print("Error: ${val.errorMsg}"),
     );
-    print("Speech available: $available");
 
     if (available) {
-      setState(() => _isListening = true);
-      _speech.listen(
-        onResult: (val) => setState(() {
-          _recognizedText = val.recognizedWords;
-          _isSaved = false; // 새로운 녹음을 시작하면 저장 상태 초기화
-        }),
+      await _speech.listen(
+        onResult: (val) {
+          setState(() {
+            if (_isListening) _recognizedText = _addQuestionMark(val.recognizedWords);
+          });
+        },
         onSoundLevelChange: (level) {
           setState(() {
             _soundLevel = level;
           });
         },
-        listenFor: const Duration(seconds: 30),
-        pauseFor: const Duration(seconds: 30),
+        listenFor: const Duration(seconds: 100),
+        pauseFor: const Duration(seconds: 100),
+        partialResults: true,
       );
     } else {
-      print("Speech recognition not available.");
+      setState(() {
+        _isListening = false;
+      });
     }
   }
 
-  void _stopListening() {
-    setState(() {
-      _isListening = false;
-      _recognizedText = "버튼을 눌러 음성을 인식하세요."; // 초기화
-      _isSaved = false;
-    });
-    _speech.stop();
+  String _addQuestionMark(String text) {
+    final questionWords = ['어디', '언젠', '어떤', '언제', '어떻게', '왜', '무엇', '누가', '무슨'];
+    final sentenceEndings = ['요', '다', '죠', '까', '나'];
+    final List<String> output = [];
+
+
+    String buffer = "";
+    bool isQuestion = false;
+
+    for (int i = 0; i < text.length; i++) {
+      String char = text[i];
+      buffer += char;
+
+      if (sentenceEndings.any((ending) => buffer.endsWith(ending))) {
+        if (questionWords.any((word) => buffer.contains(word))) {
+          isQuestion = true;
+        }
+        if (isQuestion && !buffer.endsWith('?')) {
+          buffer = buffer.trim() + '?';
+        }
+        output.add(buffer);
+        buffer = "";
+        isQuestion = false;
+      }
+    }
+    if (buffer.isNotEmpty) {
+      output.add(buffer);
+    }
+    return output.join(' ');
   }
 
-  void _saveRecording() {
+  Future<void> _stopListening() async {
+    if (_isListening) await _speech.cancel();
+
     setState(() {
-      _isSaved = true; // 녹음이 저장됨
       _isListening = false;
+      _recognizedText = _defaultPromptText;
     });
-    _sendMessages += _recognizedText;
-    print("채팅 저장: $_recognizedText");
+  }
+
+  Future<void> _saveRecording() async {
+    if (_isListening) {
+      await _speech.stop();
+      _isListening = false;
+    }
+
+    setState(() {
+      if (_recognizedText.isEmpty || _recognizedText == _defaultActivatePromptText) {
+        _recognizedText = "죄송해요. 잘 못 알아 들었어요. 다시 말씀해주시겠어요?";
+      } else {
+        _messages.add(_recognizedText);
+        _recognizedText = _defaultPromptText;
+      }
+    });
   }
 
   Future<bool> _onWillPop() async {
@@ -97,15 +147,20 @@ class MedicationChatPageState extends State<MedicationChatPage> {
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(_sendMessages, style: AppTextStyles.h3(color: AppPalette.gray)),
-                  const SizedBox(height: 20),
-                  Text(_recognizedText, style: AppTextStyles.h3()),
-                  const SizedBox(height: 20),
-                ],
+            Positioned.fill(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(20.0),
+                  itemCount: _messages.length + 1,
+                  itemBuilder: (context, index) {
+                    final isLiveText = index == _messages.length;
+                    return Align(
+                      alignment: Alignment.centerRight,
+                      child: MessageBubble(
+                        text: isLiveText ? _recognizedText : _messages[index],
+                        isLive: isLiveText,
+                      ),
+                    );
+                  }
               ),
             ),
             if (_isListening)
@@ -128,6 +183,45 @@ class MedicationChatPageState extends State<MedicationChatPage> {
           onSend: _saveRecording,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      ),
+    );
+  }
+}
+
+class MessageBubble extends StatelessWidget { // StatefulWidget 대신 StatelessWidget 사용
+  final String text;
+  final bool isLive;
+
+  const MessageBubble({
+    Key? key,
+    required this.text,
+    this.isLive = false
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width * 0.7,
+      ),
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14),
+      decoration: BoxDecoration(
+        color: isLive ? AppPalette.lightGray : Colors.transparent,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(4.0),
+          bottomLeft: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
+        ),
+        border: isLive ? null : Border.all(
+          color: AppPalette.primary,
+          width: 1.0,
+        ),
+      ),
+      child: Text(
+        text,
+        style: AppTextStyles.body(color: AppPalette.midGray),
       ),
     );
   }
